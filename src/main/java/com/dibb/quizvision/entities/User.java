@@ -1,5 +1,6 @@
 package com.dibb.quizvision.entities;
 
+import com.dibb.quizvision.dtos.UserDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,4 +34,12 @@ public class User {
     @JsonManagedReference
     private Set<Score> scoreSet = new HashSet<>();
 
+    public User(UserDto userDto){
+        if (userDto.getUsername() != null){
+            this.username = userDto.getUsername();
+        }
+        if (userDto.getPassword() != null){
+            this.password = userDto.getPassword();
+        }
+    }
 }

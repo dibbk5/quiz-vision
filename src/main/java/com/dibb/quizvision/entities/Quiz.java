@@ -1,5 +1,6 @@
 package com.dibb.quizvision.entities;
 
+import com.dibb.quizvision.dtos.QuizDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -30,4 +31,10 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Question> questionSet = new HashSet<>();
+
+    public Quiz(QuizDto quizDto){
+        if (quizDto.getQuizName() != null) {
+            this.quizName = quizDto.getQuizName();
+        }
+    }
 }

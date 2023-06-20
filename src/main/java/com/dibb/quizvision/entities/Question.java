@@ -1,5 +1,6 @@
 package com.dibb.quizvision.entities;
 
+import com.dibb.quizvision.dtos.QuestionDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -30,4 +31,10 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Answer> answerSet = new HashSet<>();
+
+    public Question(QuestionDto questionDto){
+        if (questionDto.getDescription() != null) {
+            this.description = questionDto.getDescription();
+        }
+    }
 }

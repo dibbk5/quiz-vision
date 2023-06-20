@@ -1,10 +1,17 @@
 package com.dibb.quizvision.entities;
 
+import com.dibb.quizvision.dtos.AnswerDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Quiz_Answers")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Answer {
     @Id
     @GeneratedValue
@@ -19,4 +26,10 @@ public class Answer {
     @ManyToOne
     @JsonBackReference
     private Question question;
+
+    public Answer(AnswerDto answerDto){
+        if (answerDto.getAnswer() != null){
+            this.answer = answerDto.getAnswer();
+        }
+    }
 }
