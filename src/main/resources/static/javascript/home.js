@@ -42,7 +42,9 @@ function createQuizCard(array) {
     <div class="card d-flex" style="width: 18rem; height: 18rem;">
                 <div class="card-body d-flex flex-column  justify-content-between" style="height: available">
                     <p class="card-text">${obj.quizName}</p>
+                    <p id="quiz-id" class="card-text">ID: ${obj.id}</p>
                 </div>
+                <a href="./quiz.html?quiz-id=${obj.id}&quiz-name=${obj.quizName}" class="btn btn-secondary">Goto Quiz</a>
             </div>
     `;
     quizContainer.append(quizCard);
