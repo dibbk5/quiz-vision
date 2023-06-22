@@ -12,21 +12,24 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class QuizServiceImpl {
+public class QuizServiceImpl implements QuizService {
     @Autowired
     private QuizRepository quizRepository;
 
+    @Override
     @Transactional
     public void addQuiz(QuizDto quizDto){
         Quiz quiz = new Quiz(quizDto);
         quizRepository.saveAndFlush(quiz);
     }
 
+    @Override
     public List<QuizDto> getAllQuizzes(){
         List<Quiz> quizList = quizRepository.findAll();
         return quizList.stream().map(quiz -> new QuizDto(quiz)).collect(Collectors.toList());
     }
 
+    @Override
     public Optional<QuizDto> getQuizById(Long quizId){
         Optional<Quiz> quizOptional = quizRepository.findById(quizId);
         return quizOptional.map(QuizDto::new);

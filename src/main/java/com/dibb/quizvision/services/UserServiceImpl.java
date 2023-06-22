@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepository.saveAndFlush(user);
-        response.add("User has been added successfully.");
+        response.add("http://localhost:8080/login.html");
         return response;
     }
 
@@ -32,10 +32,10 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
         if (userOptional.isPresent()){
             if (userDto.getPassword().equals(userOptional.get().getPassword())){
-                response.add("User logged in successfully");
+                response.add("http://localhost:8080/home.html");
                 response.add(String.valueOf(userOptional.get().getId()));
             } else {
-                response.add("Username of Password are incorrect");
+                response.add("Username or Password are incorrect");
             }
         } else {
             response.add("Username or Password are incorrect");
