@@ -19,6 +19,7 @@ async function addQuiz(obj) {
   if (response.status === 200) {
     window.location.replace(responseArr[0]);
   }
+  getQuizzes();
 }
 
 // Gets quizzes and sends them to the createQuizCard function to create the html

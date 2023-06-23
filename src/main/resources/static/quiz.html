@@ -8,6 +8,60 @@
 </head>
 <body>
 <h1>Quiz Questions</h1>
+<h2 id="quiz-name"></h2>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Create New Quiz
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quiz Name</h5>
+                <button type="button" class="btn btn-close" data-bs-backdrop="modal" aria-label="Close" data-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="question-description" class="col-form-label">Question Description:</label>
+                        <textarea class="form-control" rows="3" id="question-description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="answer-one" class="col-form-label">Option 1:</label>
+                        <input type="text" class="form-control" id="answer-one">
+                        <label style="display: inline-block;">Check If Correct Answer</label>
+                        <input type="checkbox" id="correct-one" style="display: inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer-two" class="col-form-label">Option 2:</label>
+                        <input type="text" class="form-control" id="answer-two">
+                        <label style="display: inline-block;">Check If Correct Answer</label>
+                        <input type="checkbox" id="correct-two" style="display: inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer-three" class="col-form-label">Option 3:</label>
+                        <input type="text" class="form-control" id="answer-three">
+                        <label style="display: inline-block;">Check If Correct Answer</label>
+                        <input type="checkbox" id="correct-three" style="display: inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer-four" class="col-form-label">Option 4:</label>
+                        <input type="text" class="form-control" id="answer-four">
+                        <label style="display: inline-block;">Check If Correct Answer</label>
+                        <input type="checkbox" id="correct-four" style="display: inline-block;">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="add-question-btn" class="btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal-->
+<div id="question-container"></div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
