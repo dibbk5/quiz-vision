@@ -14,12 +14,10 @@ async function addQuiz(obj) {
     body: JSON.stringify(obj),
     headers: headers,
   }).catch((err) => console.error(err.message));
-  const responseArr = await response.json();
 
   if (response.status === 200) {
-    window.location.replace(responseArr[0]);
+    return getQuizzes();
   }
-  getQuizzes();
 }
 
 // Gets quizzes and sends them to the createQuizCard function to create the html
