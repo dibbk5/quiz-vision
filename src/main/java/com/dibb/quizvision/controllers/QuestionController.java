@@ -14,8 +14,8 @@ public class QuestionController {
     private QuestionService questionService;
 
     @PostMapping("/question/{quizId}")
-    public void addQuestion(@RequestBody QuestionDto questionDto, @PathVariable Long quizId){
-        questionService.addQuestion(questionDto, quizId);
+    public Long addQuestion(@RequestBody QuestionDto questionDto, @PathVariable Long quizId){
+        return questionService.addQuestion(questionDto, quizId);
     }
 
     @DeleteMapping("/{questionId}")

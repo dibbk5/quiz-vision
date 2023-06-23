@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface QuestionService {
     @Transactional
-    void addQuestion(QuestionDto questionDto, Long quizId);
+    Long addQuestion(QuestionDto questionDto, Long quizId);
 
     @Transactional
     void deleteQuestion(Long questionId);

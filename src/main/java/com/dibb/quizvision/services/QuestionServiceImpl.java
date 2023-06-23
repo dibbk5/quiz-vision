@@ -24,11 +24,13 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     @Transactional
-    public void addQuestion(QuestionDto questionDto, Long quizId){
+    public Long addQuestion(QuestionDto questionDto, Long quizId){
         Optional<Quiz> quizOptional = quizRepository.findById(quizId);
         Question question = new Question(questionDto);
         quizOptional.ifPresent(question::setQuiz);
         questionRepository.saveAndFlush(question);
+        Long questionId = question.getId();
+        return questionId;
     }
 
     @Override
