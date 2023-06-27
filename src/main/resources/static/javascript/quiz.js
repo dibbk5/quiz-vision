@@ -3,6 +3,11 @@ const headers = {
 };
 const baseUrl = "http://localhost:8080/api/v1/questions/";
 
+// Getting User Id
+const userId = localStorage.getItem("user");
+console.log(userId);
+localStorage.setItem("user", userId);
+
 // Find Elements
 const addQuestionBtn = document.getElementById("add-question-btn");
 const quizName = document.getElementById("quiz-name");
@@ -147,6 +152,10 @@ function startAnswerAdd(questionId) {
   answerObj.forEach((obj) => {
     addAnswers(obj, questionId);
   });
+}
+
+function takeQuiz() {
+  window.location.href = `./attempt.html?quiz-id=${idValue}&quiz-name=${nameValue}`;
 }
 
 //Listener for when someone saves the add question modal
