@@ -5,7 +5,6 @@ const baseUrl = "http://localhost:8080/api/v1/questions/";
 
 // Getting User Id
 const userId = localStorage.getItem("user");
-console.log(userId);
 
 //Get values from URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -15,6 +14,9 @@ const nameValue = urlParams.get("quiz-name");
 // Find Elements
 const quizName = document.getElementById("quiz-name");
 const questionContainer = document.getElementById("question-container");
+
+//Set array for correct answers
+let answersArray = [];
 
 //Get Questions for quiz
 async function getQuestions() {
@@ -46,12 +48,12 @@ function createQuestionCard(array) {
     questionCard.classList.add("m-2");
     questionCard.innerHTML = `
           <div class="card d-flex" style="width: 75%; height: 10%; margin: 50px;">
-              <div class="card-header">Question ${i + 1}</div>
+              <div class="card-header" id="question${obj.id}">Question ${
+      i + 1
+    }</div>
                   <div class="card-body d-flex flex-column  justify-content-between" style="height: available">
                       <p class="card-text">${obj.description}</p>
-                      <ul class="list-group list-group-flush">
-                          <div id="${obj.id}"></div>
-                      </ul>
+                          <div id="${obj.id}"></div> 
                   </div>
               </div>
               `;
@@ -68,14 +70,46 @@ function createAnswerSection(array, questionId) {
     let answerSection = document.createElement("div");
     answerSection.innerHTML = `
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <input class="form-check-input answers" type="radio" name="answer" id="option${obj.id}">
             <label class="form-check-label" for="defaultCheck1">
             ${obj.answer}
             </label>
         </div>`;
-
     answerContainer.append(answerSection);
+    if (obj.correctAnswer === true) {
+      answersArray.push({
+        id: obj.id,
+        question: questionId,
+      });
+    }
   });
+  console.log(answersArray);
+}
+
+function submitQuiz() {
+  let userScore = 0;
+  let userAnswers = [];
+  let answerSelector = document.getElementsByName("answer");
+  console.log(answerSelector);
+  for (i = 0; i < answerSelector.length; i++) {
+    if (answerSelector[i].checked) {
+      let idString = answerSelector[i].id;
+      let answerId = idString.match(/\d+/g);
+      userAnswers.push(parseInt(answerId));
+    }
+  }
+  console.log(userAnswers);
+  for (i = 0; i < answersArray.length; i++) {
+    if (userAnswers[i] === answersArray[i].id) {
+      userScore++;
+    } else {
+      let headerText = document.getElementById(
+        `question${answersArray[i].question}`
+      );
+      headerText.classList.add("cross");
+    }
+  }
+  console.log(userScore);
 }
 
 function setQuizName() {
