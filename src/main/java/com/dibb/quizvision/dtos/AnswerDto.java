@@ -24,5 +24,8 @@ public class AnswerDto implements Serializable {
         if (answer.getAnswer() != null){
             this.answer = answer.getAnswer();
         }
+        if (answer.isCorrectAnswer()){
+            this.correctAnswer = true;
+        }
     }
 }

@@ -33,14 +33,6 @@ async function addQuestion(obj) {
     .then((data) => startAnswerAdd(data))
     .then(getQuestions)
     .catch((err) => console.error(err.message));
-
-  //   if (response.status === 200) {
-  //     return getQuestions();
-  //   }
-}
-
-function sendData(data) {
-  return data;
 }
 
 async function addAnswers(obj, questionId) {
@@ -52,6 +44,7 @@ async function addAnswers(obj, questionId) {
       headers: headers,
     }
   ).catch((err) => console.error(err.message));
+  console.log(response);
 
   if (response.status === 200) {
     return getQuestions();
@@ -92,16 +85,21 @@ async function deleteQuestion(questionId) {
 //Create cards for each question of the quiz
 function createQuestionCard(array) {
   questionContainer.innerHTML = "";
-  array.forEach((obj) => {
+  array.forEach((obj, i) => {
     let questionCard = document.createElement("div");
     questionCard.classList.add("m-2");
     questionCard.innerHTML = `
-        <div class="card d-flex" style="width: 18rem; height: 18rem;">
+        <div class="card d-flex" style="width: 75%; height: 10%; margin: 50px;">
+            <div class="card-header">Question ${i + 1}</div>
                 <div class="card-body d-flex flex-column  justify-content-between" style="height: available">
                     <p class="card-text">${obj.description}</p>
+                    <ul class="list-group list-group-flush">
+                        <div id="${obj.id}"></div>
+                    </ul>
                 </div>
-                <div id="${obj.id}"></div>
-                <button class="btn btn-danger" onclick="deleteQuestion(${obj.id})">Delete</button>
+                <button class="btn btn-danger" onclick="deleteQuestion(${
+                  obj.id
+                })">Delete</button>
             </div>
             `;
     getAnswers(obj.id);
@@ -115,8 +113,13 @@ function createAnswerSection(array, questionId) {
   answerContainer.innerHTML = "";
   array.forEach((obj) => {
     let answerSection = document.createElement("div");
-    answerSection.innerHTML = `
-        <p>${obj.answer}</p>`;
+    if (obj.correctAnswer === true) {
+      answerSection.innerHTML = `
+            <li class="list-group-item" style="background-color: red;">${obj.answer}</li>`;
+    } else {
+      answerSection.innerHTML = `
+            <li class="list-group-item">${obj.answer}</li>`;
+    }
     answerContainer.append(answerSection);
   });
 }
@@ -126,19 +129,19 @@ function startAnswerAdd(questionId) {
   let answerObj = [
     {
       answer: answerOne.value,
-      correct_answer: correctOne.checked,
+      correctAnswer: correctOne.checked,
     },
     {
       answer: answerTwo.value,
-      correct_answer: correctTwo.checked,
+      correctAnswer: correctTwo.checked,
     },
     {
       answer: answerThree.value,
-      correct_answer: correctThree.checked,
+      correctAnswer: correctThree.checked,
     },
     {
       answer: answerFour.value,
-      correct_answer: correctFour.checked,
+      correctAnswer: correctFour.checked,
     },
   ];
   answerObj.forEach((obj) => {

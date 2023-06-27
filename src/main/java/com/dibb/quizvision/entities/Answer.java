@@ -31,5 +31,8 @@ public class Answer {
         if (answerDto.getAnswer() != null){
             this.answer = answerDto.getAnswer();
         }
+        if (answerDto.isCorrectAnswer()) {
+            this.correctAnswer = true;
+        }
     }
 }

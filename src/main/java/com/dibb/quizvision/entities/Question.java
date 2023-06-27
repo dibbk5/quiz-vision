@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +30,8 @@ public class Question {
     @JsonBackReference
     private Quiz quiz;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JsonManagedReference
     private Set<Answer> answerSet = new HashSet<>();
 
