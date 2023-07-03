@@ -1,0 +1,79 @@
+body {
+    background-color: #f7ffef;
+    color: #546A76;
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    font-family: 'Caprasimo', cursive;
+    font-size: 48px;
+}
+
+img {
+    width: 5%;
+    height: 5%;
+}
+
+.btn-primary {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    color: #d7f2ba;
+    background-color: #1A6A8E;
+    border-color: #d7f2ba;
+}
+
+.btn-primary:focus {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+}
+
+.btn-secondary {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+    width: 25%;
+}
+
+.btn-secondary:hover {
+    color: #d7f2ba;
+    background-color: #1A6A8E;
+    border-color: #d7f2ba;
+}
+
+.btn-danger {
+    color: #f7ffef;
+    background-color: #d64933;
+    border-color: #f7ffef;
+    width: 25%;
+}
+
+.btn-danger:hover {
+    color: #d64933;
+    background-color: #f7ffef;
+    border-color: #d64933;
+}
+
+.card {
+    background-color: #B5E8FF;
+    border-color: #1A6A8E;
+    width: 20rem;
+}
+
+#quiz-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    border: #d7f2ba;
+}
+
+#quiz-container .item {
+    flex: 1;
+}
