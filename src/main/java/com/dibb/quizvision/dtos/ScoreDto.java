@@ -27,5 +27,8 @@ public class ScoreDto implements Serializable {
         if (score.getDenominator() != null){
             this.denominator = score.getDenominator();
         }
+        if (score.getQuizName() != null){
+            this.quizName = score.getQuizName();
+        }
     }
 }

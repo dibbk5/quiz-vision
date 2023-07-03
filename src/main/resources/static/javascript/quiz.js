@@ -39,6 +39,7 @@ async function addQuestion(obj) {
     .catch((err) => console.error(err.message));
 }
 
+//Adds answers to the question
 async function addAnswers(obj, questionId) {
   const response = await fetch(
     `http://localhost:8080/api/v1/answers/answer/${questionId}`,
@@ -48,7 +49,6 @@ async function addAnswers(obj, questionId) {
       headers: headers,
     }
   ).catch((err) => console.error(err.message));
-  console.log(response);
 
   if (response.status === 200) {
     return getQuestions();
@@ -156,7 +156,6 @@ function startAnswerAdd(questionId) {
 
 //Gets the title of the quiz for the html
 function setQuizName() {
-  console.log(nameValue);
   quizName.innerText = `Quiz Name: ${nameValue}`;
 }
 

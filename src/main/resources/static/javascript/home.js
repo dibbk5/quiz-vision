@@ -5,7 +5,6 @@ const baseUrl = "http://localhost:8080/api/v1/quizzes/";
 
 // Getting User Id
 const userId = localStorage.getItem("user");
-console.log(userId);
 localStorage.setItem("user", userId);
 
 const createQuizBtn = document.getElementById("create-new-quiz-btn");

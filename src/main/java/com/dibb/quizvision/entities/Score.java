@@ -40,6 +40,9 @@ public class Score {
         if (scoreDto.getDenominator() != null){
             this.denominator = scoreDto.getDenominator();
         }
+        if (scoreDto.getQuizName() != null){
+            this.quizName = scoreDto.getQuizName();
+        }
 
     }
 }

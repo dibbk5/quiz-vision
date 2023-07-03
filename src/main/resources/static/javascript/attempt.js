@@ -42,6 +42,14 @@ async function getAnswers(questionId) {
     .catch((err) => console.error(err));
 }
 
+async function addScore(obj) {
+  await fetch(`http://localhost:8080/api/v1/scores/score/${userId}`, {
+    method: "POST",
+    body: JSON.stringify(obj),
+    headers: headers,
+  }).catch((err) => console.error(err.message));
+}
+
 //Create cards for each question of the quiz
 function createQuestionCard(array) {
   questionContainer.innerHTML = "";
@@ -75,7 +83,7 @@ function createAnswerSection(array, questionId) {
     answerSection.innerHTML = `
         <div class="form-check">
         <label class="form-check-label">
-            <input class="form-check-input answers" type="radio" id="option${obj.id}" role="${questionId}">
+            <input class="form-check-input answers" type="radio" id="option${obj.id}" name="question${questionId}">
             ${obj.answer}
           </label>
         </div>`;
@@ -140,7 +148,14 @@ function submitQuiz() {
     }
   }
 
+  //Takes care of sending score to database
   const finalPercentage = (userScore / numberQuestions) * 100;
+  const scoreObj = {
+    score: userScore,
+    denominator: numberQuestions,
+    quizName: nameValue,
+  };
+  addScore(scoreObj);
 
   scoreContainer.innerHTML = `
     <div class="container">SCORE: ${finalPercentage} %</div>
