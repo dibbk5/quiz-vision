@@ -15,6 +15,7 @@ const nameValue = urlParams.get("quiz-name");
 const quizName = document.getElementById("quiz-name");
 const questionContainer = document.getElementById("question-container");
 const scoreContainer = document.getElementById("score-container");
+const doneContainer = document.getElementById("when-done");
 
 //Set array for correct answers
 let answersArray = [];
@@ -48,7 +49,7 @@ function createQuestionCard(array) {
     let questionCard = document.createElement("div");
     questionCard.classList.add("m-2");
     questionCard.innerHTML = `
-          <div class="card d-flex" style="width: 75%; height: 10%; margin: 50px;">
+          <div class="card d-flex">
               <div class="card-header" id="question${
                 obj.id
               }" name="question">Question ${i + 1}
@@ -73,10 +74,10 @@ function createAnswerSection(array, questionId) {
     let answerSection = document.createElement("div");
     answerSection.innerHTML = `
         <div class="form-check">
-            <input class="form-check-input answers" type="radio" name="answer" id="option${obj.id}">
-            <label class="form-check-label" for="defaultCheck1">
+        <label class="form-check-label">
+            <input class="form-check-input answers" type="radio" id="option${obj.id}" role="${questionId}">
             ${obj.answer}
-            </label>
+          </label>
         </div>`;
     answerContainer.append(answerSection);
     if (obj.correctAnswer === true) {
@@ -86,24 +87,34 @@ function createAnswerSection(array, questionId) {
       });
     }
   });
-  console.log(answersArray);
 }
 
+//Submits quiz and shows you the score and correct answers
 function submitQuiz() {
   let userScore = 0;
   let userAnswers = [];
-  const answerSelector = document.getElementsByName("answer");
   const questionSelector = document.getElementsByName("question");
+  let answerSelector = document.querySelectorAll(".answers");
   const numberQuestions = questionSelector.length;
+  answersArray.sort((a, b) => {
+    return a.question - b.question;
+  });
   for (i = 0; i < answerSelector.length; i++) {
     if (answerSelector[i].checked) {
       let idString = answerSelector[i].id;
       let answerId = idString.match(/\d+/g);
-      userAnswers.push(parseInt(answerId));
+      let obj = {
+        id: parseInt(answerId),
+        question: parseInt(answerSelector[i].role),
+      };
+      userAnswers.push(obj);
     }
   }
+  userAnswers.sort((a, b) => {
+    return a.question - b.question;
+  });
   for (i = 0; i < answersArray.length; i++) {
-    if (userAnswers[i] === answersArray[i].id) {
+    if (userAnswers[i].id === answersArray[i].id) {
       userScore++;
       let headerText = document.getElementById(
         `question${answersArray[i].question}`
@@ -134,12 +145,13 @@ function submitQuiz() {
   scoreContainer.innerHTML = `
     <div class="container">SCORE: ${finalPercentage} %</div>
     <div class="container">You got ${userScore} out of ${numberQuestions} quesitons correct.</div>`;
-  console.log(userScore);
+
+  doneContainer.innerHTML = ``;
 }
 
 function setQuizName() {
   quizName.innerHTML = `
-        <h1>${nameValue}</h1>`;
+        <h2>Quiz Name: ${nameValue}</h2>`;
 }
 
 setQuizName();

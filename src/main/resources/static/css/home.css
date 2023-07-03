@@ -62,6 +62,8 @@ img {
 .card {
     background-color: #B5E8FF;
     border-color: #1A6A8E;
+    box-shadow: 1px 1px 1px 1px;
+    border-width: 1px;
     width: 20rem;
 }
 

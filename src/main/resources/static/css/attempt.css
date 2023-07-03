@@ -1,3 +1,44 @@
+body {
+    background-color: #f7ffef;
+    color: #546A76;
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    font-family: 'Caprasimo', cursive;
+    font-size: 48px;
+}
+
+img {
+    width: 5%;
+    height: 5%;
+}
+
+.btn-primary {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    color: #d7f2ba;
+    background-color: #1A6A8E;
+    border-color: #d7f2ba;
+}
+
+.btn-primary:focus {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+}
+
+.card {
+    width: 90%;
+    height: 10%;
+    margin: 50px;
+}
+
 .cross {
     text-decoration: line-through;
     color: red;
@@ -6,3 +47,4 @@
 .correct {
     color: green;
 }
+

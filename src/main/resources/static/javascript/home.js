@@ -48,7 +48,8 @@ function createQuizCard(array) {
                     <p class="card-text">${obj.quizName}</p>
                     <p id="quiz-id" class="card-text">ID: ${obj.id}</p>
                 </div>
-                <a href="./quiz.html?quiz-id=${obj.id}&quiz-name=${obj.quizName}" class="btn btn-primary">Goto Quiz</a>
+                <a href="./attempt.html?quiz-id=${obj.id}&quiz-name=${obj.quizName}" class="btn btn-primary">Take Quiz</a>
+                <a href="./quiz.html?quiz-id=${obj.id}&quiz-name=${obj.quizName}" class="btn btn-primary">Edit Quiz</a>
             </div>
     `;
     quizContainer.append(quizCard);
