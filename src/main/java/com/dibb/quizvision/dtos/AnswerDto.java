@@ -1,7 +1,6 @@
 package com.dibb.quizvision.dtos;
 
 import com.dibb.quizvision.entities.Answer;
-import com.dibb.quizvision.entities.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

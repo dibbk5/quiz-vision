@@ -18,7 +18,10 @@ public class Score {
     private Long id;
 
     @Column(name = "score")
-    private double score;
+    private Integer score;
+
+    @Column(name = "denominator")
+    private Integer denominator;
 
     @Column(name = "quiz_name")
     private String quizName;
@@ -31,5 +34,12 @@ public class Score {
         if (scoreDto.getQuizName() != null){
             this.quizName = scoreDto.getQuizName();
         }
+        if (scoreDto.getScore() != null){
+            this.score = scoreDto.getScore();
+        }
+        if (scoreDto.getDenominator() != null){
+            this.denominator = scoreDto.getDenominator();
+        }
+
     }
 }

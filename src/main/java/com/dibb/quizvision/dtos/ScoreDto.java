@@ -12,7 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ScoreDto implements Serializable {
     private Long id;
-    private double score;
+    private Integer score;
+    private Integer denominator;
     private String quizName;
     private UserDto userDto;
 
@@ -20,8 +21,11 @@ public class ScoreDto implements Serializable {
         if (score.getId() != null){
             this.id = score.getId();
         }
-        if (score.getQuizName() != null){
-            this.quizName = score.getQuizName();
+        if (score.getScore() != null){
+            this.score = score.getScore();
+        }
+        if (score.getDenominator() != null){
+            this.denominator = score.getDenominator();
         }
     }
 }
