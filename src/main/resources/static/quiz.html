@@ -2,69 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/quiz.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/quiz.css" type="text/css">
     <title>Quiz Questions</title>
 </head>
 <body>
-<h1>Quiz Questions</h1>
-<h2 id="quiz-name"></h2>
-<button class="btn btn-primary" onclick="takeQuiz()">Take Quiz</button>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Create New Question
-</button>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Quiz Name</h5>
-                <button type="button" class="btn btn-close" data-bs-backdrop="modal" aria-label="Close" data-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="question-description" class="col-form-label">Question Description:</label>
-                        <textarea class="form-control" rows="3" id="question-description"></textarea>
+    <div class="d-flex mt-2">
+        <img src="./img/logo.png" class="img-fluid mx-3" alt="Logo">
+        <h1>Quiz Vision</h1>
+    </div>
+    <div class="container">
+        <h2 id="quiz-name"></h2>
+        <div class="d-flex align-content-center justify-content-around flex-row">
+            <button class="btn btn-primary mt-2" onclick="takeQuiz()">Take Quiz</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModal">
+                Create New Question
+            </button>
+            <a href="./home.html" class="btn btn-primary mt-2">Back to Home</a>
+        </div>
+        <div class="mt-2">Correct answers are highlighted in green:</div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Quiz Name</h5>
+                        <button type="button" class="btn btn-close" data-bs-backdrop="modal" aria-label="Close" data-dismiss="modal"></button>
                     </div>
-                    <div class="form-group">
-                        <label for="answer-one" class="col-form-label">Option 1:</label>
-                        <input type="text" class="form-control" id="answer-one">
-                        <label style="display: inline-block;">Check If Correct Answer</label>
-                        <input type="checkbox" id="correct-one" style="display: inline-block;">
+                    
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="question-description" class="col-form-label">Question Description:</label>
+                                <textarea class="form-control" rows="3" id="question-description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="answer-one" class="col-form-label">Option 1:</label>
+                                <input type="text" class="form-control" id="answer-one">
+                                <label style="display: inline-block;">Check If Correct Answer</label>
+                                <input type="checkbox" id="correct-one" style="display: inline-block;">
+                            </div>
+                            <div class="form-group">
+                                <label for="answer-two" class="col-form-label">Option 2:</label>
+                                <input type="text" class="form-control" id="answer-two">
+                                <label style="display: inline-block;">Check If Correct Answer</label>
+                                <input type="checkbox" id="correct-two" style="display: inline-block;">
+                            </div>
+                            <div class="form-group">
+                                <label for="answer-three" class="col-form-label">Option 3:</label>
+                                <input type="text" class="form-control" id="answer-three">
+                                <label style="display: inline-block;">Check If Correct Answer</label>
+                                <input type="checkbox" id="correct-three" style="display: inline-block;">
+                            </div>
+                            <div class="form-group">
+                                <label for="answer-four" class="col-form-label">Option 4:</label>
+                                <input type="text" class="form-control" id="answer-four">
+                                <label style="display: inline-block;">Check If Correct Answer</label>
+                                <input type="checkbox" id="correct-four" style="display: inline-block;">
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="answer-two" class="col-form-label">Option 2:</label>
-                        <input type="text" class="form-control" id="answer-two">
-                        <label style="display: inline-block;">Check If Correct Answer</label>
-                        <input type="checkbox" id="correct-two" style="display: inline-block;">
+                    <div class="modal-footer">
+                        <button type="button" id="add-question-btn" class="btn btn-primary" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                    <div class="form-group">
-                        <label for="answer-three" class="col-form-label">Option 3:</label>
-                        <input type="text" class="form-control" id="answer-three">
-                        <label style="display: inline-block;">Check If Correct Answer</label>
-                        <input type="checkbox" id="correct-three" style="display: inline-block;">
-                    </div>
-                    <div class="form-group">
-                        <label for="answer-four" class="col-form-label">Option 4:</label>
-                        <input type="text" class="form-control" id="answer-four">
-                        <label style="display: inline-block;">Check If Correct Answer</label>
-                        <input type="checkbox" id="correct-four" style="display: inline-block;">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="add-question-btn" class="btn btn-primary" data-dismiss="modal">Save</button>
+                </div>
             </div>
         </div>
+        <!--End of Modal-->
+        <div id="question-container"></div>
+        
     </div>
-</div>
-<!--End of Modal-->
-<div id="question-container"></div>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

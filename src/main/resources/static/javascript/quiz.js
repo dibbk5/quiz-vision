@@ -5,7 +5,6 @@ const baseUrl = "http://localhost:8080/api/v1/questions/";
 
 // Getting User Id
 const userId = localStorage.getItem("user");
-console.log(userId);
 localStorage.setItem("user", userId);
 
 // Find Elements
@@ -92,9 +91,8 @@ function createQuestionCard(array) {
   questionContainer.innerHTML = "";
   array.forEach((obj, i) => {
     let questionCard = document.createElement("div");
-    questionCard.classList.add("m-2");
     questionCard.innerHTML = `
-        <div class="card d-flex" style="width: 75%; height: 10%; margin: 50px;">
+        <div class="card d-flex" style="width: 75%; height: 10%; margin: 25px;">
             <div class="card-header">Question ${i + 1}</div>
                 <div class="card-body d-flex flex-column  justify-content-between" style="height: available">
                     <p class="card-text">${obj.description}</p>
@@ -102,9 +100,11 @@ function createQuestionCard(array) {
                         <div id="${obj.id}"></div>
                     </ul>
                 </div>
-                <button class="btn btn-danger" onclick="deleteQuestion(${
-                  obj.id
-                })">Delete</button>
+                <div class="d-flex align-content-center justify-content-around">
+                  <button class="btn btn-danger" onclick="deleteQuestion(${
+                    obj.id
+                  })">Delete</button>
+                </div>
             </div>
             `;
     getAnswers(obj.id);
@@ -120,10 +120,10 @@ function createAnswerSection(array, questionId) {
     let answerSection = document.createElement("div");
     if (obj.correctAnswer === true) {
       answerSection.innerHTML = `
-            <li class="list-group-item" style="background-color: red;">${obj.answer}</li>`;
+            <li class="list-group-item correct-answer">${obj.answer}</li>`;
     } else {
       answerSection.innerHTML = `
-            <li class="list-group-item">${obj.answer}</li>`;
+            <li class="list-group-item answer">${obj.answer}</li>`;
     }
     answerContainer.append(answerSection);
   });
@@ -154,6 +154,12 @@ function startAnswerAdd(questionId) {
   });
 }
 
+//Gets the title of the quiz for the html
+function setQuizName() {
+  console.log(nameValue);
+  quizName.innerText = `Quiz Name: ${nameValue}`;
+}
+
 function takeQuiz() {
   window.location.href = `./attempt.html?quiz-id=${idValue}&quiz-name=${nameValue}`;
 }
@@ -167,4 +173,5 @@ addQuestionBtn.addEventListener("click", (e) => {
   addQuestion(bodyObj);
 });
 
+setQuizName();
 getQuestions();

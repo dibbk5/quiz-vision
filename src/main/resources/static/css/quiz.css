@@ -1,0 +1,81 @@
+body {
+    background-color: #f7ffef;
+    color: #546A76;
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    font-family: 'Caprasimo', cursive;
+    font-size: 48px;
+}
+
+img {
+    width: 5%;
+    height: 5%;
+}
+
+ul {
+    background: blue;
+}
+
+.answer {
+    background-color: #f7ffef;
+}
+
+.btn-primary {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+    width: 30%;
+}
+
+.btn-primary:hover {
+    color: #d7f2ba;
+    background-color: #1A6A8E;
+    border-color: #d7f2ba;
+}
+
+.btn-primary:focus {
+    color: #1A6A8E;
+    background-color: #d7f2ba;
+    border-color: #1A6A8E;
+}
+
+.btn-secondary {
+    color: #f7ffef;
+    background-color: #d64933;
+    border-color: #d64933;
+    width: 30%;
+}
+
+.btn-secondary:hover {
+    color: #d64933;
+    background-color: #f7ffef;
+    border-color: #d64933;
+}
+
+.btn-danger {
+    color: #f7ffef;
+    background-color: #d64933;
+    border-color: #d64933;
+    border-radius: 30px;
+    width: 99%;
+}
+
+.btn-danger:hover {
+    color: #d64933;
+    background-color: #f7ffef;
+    border-color: #d64933;
+}
+
+.card {
+    background-color: #B5E8FF;
+    border-color: #1A6A8E;
+    box-shadow: 2px 2px 2px 2px;
+    border-width: 2px;
+    border-radius: 30px;
+}
+
+.correct-answer {
+    background-color: #d7f2ba;
+}
